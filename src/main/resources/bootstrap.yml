@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: boot-email
+  profiles:
+    active: dev
+server:
+  port: ${server-port:9014}

@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    consul:
+      host: ${consul_host:127.0.0.1}
+      port: ${consul_port:8500}
+      enabled: true
+      discovery:
+        enabled: true
+        instance-id: ${spring.application.name}:${server.port}
+        prefer-ip-address: true
+        health-check-interval: 10s
+        hostname: ${spring.application.name}
+        service-name: ${spring.application.name}
+  zipkin:
+    base-url: ${zipkin_url:http://localhost:9411/}
+  sleuth:
+    sampler:
+      percentage: 1.0
+    web:
+      client:
+        enabled: true
+
+  boot:
+    admin:
+      client:
+        url: ${nccc_admin_monitor:http://localhost:9020}
+        instance:
+          prefer-ip: true
+#        username: admin
+#        password: admin
+
+# 邮件配置
+  mail:
+    host: smtp.qq.com #QQ邮箱smtp主机
+    port: 587 #端口号465或587
+    username: 840300733@qq.com
+    password: xxxxxxx #这里QQ邮箱开通POP3/SMTP提供的授权码，如果邮件服务商没有授权码，可以使用密码代替
+    protocol: smtp
+    default-encoding: UTF-8
